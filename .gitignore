@@ -1,0 +1,5 @@
+# Project exclude paths
+/datazoneeureka/target/
+/datazonefeign/target/
+/datazoneservice/target/
+/out/

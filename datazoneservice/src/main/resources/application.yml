@@ -1,0 +1,24 @@
+server:
+  port: 3333
+
+spring:
+  application:
+    name: datazone
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/datazone?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+
+#mybatis 依赖
+mybatis:
+  type-aliases-package: com.huawei.dao
+logging:
+  file:
+    name: datazone.log
+  level:
+    root: debug
