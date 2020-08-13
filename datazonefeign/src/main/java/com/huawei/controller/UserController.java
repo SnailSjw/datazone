@@ -58,7 +58,7 @@ public class UserController {
         InputStream inputStream = null;
         try {
             // feign文件下载
-            Response response = fileTestClient.download();
+            //Response response = fileTestClient.download();
             Response.Body body = response.body();
             inputStream = body.asInputStream();
             byte[] b = new byte[inputStream.available()];
@@ -80,6 +80,6 @@ public class UserController {
             }
         }
         return result;
-        userService.exportAllUser(response);
+        //userService.exportAllUser(response);
     }
 }

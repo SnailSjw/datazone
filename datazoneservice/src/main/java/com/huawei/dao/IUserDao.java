@@ -18,4 +18,10 @@ public interface IUserDao {
     List<User> selectAllUser();
     @Select("select id, name, age, birthday, introduce from User where id=#{id}")
     User selectById(int id);
+
+    @Insert("<script> insert into User (id, name, age, birthday, introduce) values  " +
+            "  <foreach collection='list' item='item' separator=',' > " +
+            "  (#{item.id},#{item.name},#{item.age},#{item.birthday},#{item.introduce}) " +
+            "  </foreach> </script>")
+    int batchInsert(@Param(value = "list") List<User> list);
 }

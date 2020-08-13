@@ -1,6 +1,7 @@
 package com.huawei.service;
 
 import com.huawei.entiry.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -19,5 +20,11 @@ public interface IUserService {
 
     User selectById(int id);
 
-    void exportAllUser(HttpServletResponse response);
+    void exportAllUser(HttpServletResponse response) throws IOException;
+
+    void exportFile();
+
+    String upload(MultipartFile file);
+
+    //int batchInsert(List<User> list);
 }

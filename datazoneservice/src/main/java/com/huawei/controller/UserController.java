@@ -4,9 +4,11 @@ import com.huawei.entiry.User;
 import com.huawei.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -44,6 +46,20 @@ public class UserController {
     @GetMapping("/export")
     @ResponseBody
     public void exportAllUser(HttpServletResponse response){
-        userService.exportAllUser(response);
+        try {
+            userService.exportAllUser(response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @GetMapping("/exportFile")
+    @ResponseBody
+    public void exportFile(){
+        userService.exportFile();
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestPart("file") MultipartFile file) {
+        return userService.upload(file);
     }
 }
