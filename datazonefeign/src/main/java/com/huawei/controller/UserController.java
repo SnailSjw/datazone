@@ -53,12 +53,14 @@ public class UserController {
 
     @GetMapping("/export")
     @ResponseBody
-    public ResponseEntity<byte[]> exportAllUser(){
+    public ResponseEntity<String> exportAllUser(HttpServletResponse response){
         ResponseEntity<byte[]> result = null;
-        InputStream inputStream = null;
+        return userService.exportAllUser(response);
+        /*InputStream inputStream = null;
         try {
             // feign文件下载
             //Response response = fileTestClient.download();
+
             Response.Body body = response.body();
             inputStream = body.asInputStream();
             byte[] b = new byte[inputStream.available()];
@@ -80,6 +82,8 @@ public class UserController {
             }
         }
         return result;
+        */
+
         //userService.exportAllUser(response);
     }
 }
